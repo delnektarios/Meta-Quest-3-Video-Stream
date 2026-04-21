@@ -33,7 +33,7 @@ For comprehensive guides, API reference, and tutorials, visit the official Meta 
 - **Passthrough:** Must be enabled in your project
 
 > [!NOTE]
-> You must use a physical headset to preview the passthrough camera. XR Simulator and Meta Horizon Link do not currently support passthrough cameras.
+> You must use a physical headset or Meta Horizon Link v2.1 or later to preview the passthrough camera. XR Simulator does not currently support Passthrough Camera API.
 
 ## Download the Project
 

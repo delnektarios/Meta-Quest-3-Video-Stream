@@ -14,12 +14,8 @@ namespace PassthroughCameraSamples.MultiObjectDetection
     {
         [SerializeField] private PassthroughCameraAccess m_cameraAccess;
 
-        [Header("Controls configuration")]
-        [SerializeField] private OVRInput.RawButton m_actionButton = OVRInput.RawButton.A;
-
         [Header("Placement configuration")]
         [SerializeField] private DetectionSpawnMarkerAnim m_spawnMarker;
-        [SerializeField] private AudioSource m_placeSound;
 
         [SerializeField] private SentisInferenceUiManager m_uiInference;
         [Space(10)]
@@ -60,14 +56,14 @@ namespace PassthroughCameraSamples.MultiObjectDetection
             else
             {
                 // Press A button to spawn 3d markers
-                if (OVRInput.GetUp(m_actionButton))
+                if (InputManager.IsButtonADownOrPinchStarted())
                 {
                     SpawnCurrentDetectedObjects();
                 }
             }
 
             // Press B button to clean all markers
-            if (OVRInput.GetDown(OVRInput.RawButton.B))
+            if (InputManager.IsButtonBDownOrMiddleFingerPinchStarted())
             {
                 CleanMarkers();
             }
@@ -131,15 +127,17 @@ namespace PassthroughCameraSamples.MultiObjectDetection
             IEnumerator RestoreSpatialAnchorTracking()
             {
                 // Try to restore spatial anchor tracking. If restoration fails, erase it.
-                const int numRetries = 5;
+                LogSpatialAnchor("tracking was lost, restoring...");
+                const int numRetries = 20;
                 for (int i = 0; i < numRetries; i++)
                 {
+                    yield return new WaitForSeconds(1f);
                     if (!m_isHeadsetTracking)
                     {
-                        yield break;
+                        LogSpatialAnchor($"{nameof(m_isHeadsetTracking)} is false, retrying ({i})");
+                        continue;
                     }
 
-                    LogSpatialAnchor("tracking was lost, restoring...");
                     var unboundAnchors = new List<OVRSpatialAnchor.UnboundAnchor>(1);
                     var awaiter = OVRSpatialAnchor.LoadUnboundAnchorsAsync(new[]
                     {
@@ -152,27 +150,26 @@ namespace PassthroughCameraSamples.MultiObjectDetection
                     var loadResult = awaiter.GetResult();
                     if (!loadResult.Success)
                     {
-                        LogSpatialAnchor($"LoadUnboundAnchorsAsync() failed {loadResult.Status}", LogType.Error);
-                        EraseSpatialAnchor();
-                        yield break;
+                        LogSpatialAnchor($"LoadUnboundAnchorsAsync() failed {loadResult.Status}, retrying ({i})", LogType.Error);
+                        continue;
                     }
                     if (unboundAnchors.Count != 0)
                     {
-                        LogSpatialAnchor($"LoadUnboundAnchorsAsync() unexpected count:{unboundAnchors.Count}", LogType.Error);
-                        EraseSpatialAnchor();
-                        yield break;
+                        LogSpatialAnchor($"LoadUnboundAnchorsAsync() unexpected count:{unboundAnchors.Count}, retrying ({i})", LogType.Error);
+                        continue;
                     }
                     yield return null;
-                    if (m_spatialAnchor.IsTracked)
+                    if (!m_spatialAnchor.IsTracked)
                     {
-                        LogSpatialAnchor("tracking was restored successfully");
-                        yield break;
+                        LogSpatialAnchor($"tracking is not restored, retrying ({i})");
+                        continue;
                     }
 
-                    yield return new WaitForSeconds(1f);
+                    LogSpatialAnchor("tracking was restored successfully");
+                    yield break;
                 }
 
-                LogSpatialAnchor("tracking restoration failed", LogType.Warning);
+                LogSpatialAnchor($"tracking restoration failed after {numRetries} retries", LogType.Warning);
                 EraseSpatialAnchor();
             }
         }
@@ -193,6 +190,7 @@ namespace PassthroughCameraSamples.MultiObjectDetection
 
         private void CleanMarkers()
         {
+            LogSpatialAnchor("CleanMarkers");
             foreach (var e in m_spawnedEntities)
             {
                 Destroy(e.gameObject);
@@ -216,17 +214,13 @@ namespace PassthroughCameraSamples.MultiObjectDetection
             {
                 if (!HasExistingMarkerInBoundingBox(box))
                 {
+                    LogSpatialAnchor($"spawn marker {box.ClassName}");
                     var marker = Instantiate(m_spawnMarker, box.BoxRectTransform.position, box.BoxRectTransform.rotation, m_uiInference.ContentParent);
                     marker.GetComponent<DetectionSpawnMarkerAnim>().SetYoloClassName(box.ClassName);
 
                     m_spawnedEntities.Add(marker);
                     newCount++;
                 }
-            }
-            if (newCount > 0)
-            {
-                // Play sound if a new marker is placed.
-                m_placeSound.Play();
             }
             OnObjectsIdentified?.Invoke(newCount);
 

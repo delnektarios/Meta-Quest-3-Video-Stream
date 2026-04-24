@@ -11,15 +11,11 @@ namespace PassthroughCameraSamples.MultiObjectDetection
     [MetaCodeSample("PassthroughCameraApiSamples-MultiObjectDetection")]
     public class DetectionUiMenuManager : MonoBehaviour
     {
-        [Header("Ui buttons")]
-        [SerializeField] private OVRInput.RawButton m_actionButton = OVRInput.RawButton.A;
-
         [Header("Ui elements ref.")]
         [SerializeField] private GameObject m_loadingPanel;
         [SerializeField] private GameObject m_initialPanel;
         [SerializeField] private GameObject m_noPermissionPanel;
         [SerializeField] private Text m_labelInformation;
-        [SerializeField] private AudioSource m_buttonSound;
 
         public bool IsInputActive { get; set; } = false;
 
@@ -84,9 +80,8 @@ namespace PassthroughCameraSamples.MultiObjectDetection
 
         private void InitialMenuUpdate()
         {
-            if (OVRInput.GetUp(m_actionButton))
+            if (InputManager.IsButtonADownOrPinchStarted())
             {
-                m_buttonSound?.Play();
                 OnPauseMenu(false);
             }
         }

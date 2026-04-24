@@ -35,8 +35,11 @@ MonoBehaviour:
   skipUnneededShaders: 0
   enableIL2CPPLTO: 0
   removeGradleManifest: 1
+<<<<<<< HEAD
+=======
   metaXrFeaturePromptDeclined: 1
   useOpenXRPromptDeclined: 0
+>>>>>>> upstream/main
   focusAware: 1
   requiresSystemKeyboard: 0
   experimentalFeaturesEnabled: 0

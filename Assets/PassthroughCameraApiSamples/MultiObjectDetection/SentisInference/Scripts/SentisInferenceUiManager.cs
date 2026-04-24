@@ -12,8 +12,6 @@ namespace PassthroughCameraSamples.MultiObjectDetection
     [MetaCodeSample("PassthroughCameraApiSamples-MultiObjectDetection")]
     public class SentisInferenceUiManager : MonoBehaviour
     {
-        [SerializeField] private DetectionManager m_detectionManager;
-
         [Header("Placement configuration")]
         [SerializeField] private EnvironmentRayCastSampleManager m_environmentRaycast;
         [SerializeField] private PassthroughCameraAccess m_cameraAccess;
@@ -89,6 +87,11 @@ namespace PassthroughCameraSamples.MultiObjectDetection
                 // Get the 3D marker world position using Depth Raycast
                 var ray = m_cameraAccess.ViewportPointToRay(new Vector2(normalizedCenter.x, 1.0f - normalizedCenter.y), cameraPose);
                 var worldPos = m_environmentRaycast.Raycast(ray);
+                if (!worldPos.HasValue)
+                {
+                    Debug.Log($"RaycastManager failed, ray:{ray}, cameraPose:{cameraPose}");
+                    continue;
+                }
                 var normRect = new Rect(
                     rect.x / inputSize.x,
                     1f - rect.yMax / inputSize.y,
@@ -97,7 +100,7 @@ namespace PassthroughCameraSamples.MultiObjectDetection
                 );
 
                 // Calculate distance and center point first
-                float distance = worldPos.HasValue ? Vector3.Distance(cameraPose.position, worldPos.Value) : 1f;
+                float distance = Vector3.Distance(cameraPose.position, worldPos.Value);
                 var worldSpaceCenter = m_cameraAccess.ViewportPointToRay(normRect.center, cameraPose).GetPoint(distance);
                 var normal = (worldSpaceCenter - cameraPose.position).normalized;
 

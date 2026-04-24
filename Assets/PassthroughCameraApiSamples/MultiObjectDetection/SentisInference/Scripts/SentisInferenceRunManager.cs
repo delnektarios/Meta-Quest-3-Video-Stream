@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Meta.XR;
 using Meta.XR.Samples;
 using Unity.Collections;
@@ -94,6 +95,15 @@ namespace PassthroughCameraSamples.MultiObjectDetection
             {
                 yield break;
             }
+
+            [DllImport("OVRPlugin", CallingConvention = CallingConvention.Cdecl)]
+            static extern OVRPlugin.Result ovrp_GetNodePoseStateAtTime(double time, OVRPlugin.Node nodeId, out OVRPlugin.PoseStatef nodePoseState);
+            if (!ovrp_GetNodePoseStateAtTime(OVRPlugin.GetTimeInSeconds(), OVRPlugin.Node.Head, out _).IsSuccess())
+            {
+                Debug.Log("ovrp_GetNodePoseStateAtTime failed, which means 'm_cameraAccess.GetCameraPose()' is not reliable, skipping.");
+                yield break;
+            }
+
             var cachedCameraPose = m_cameraAccess.GetCameraPose();
 
             // Update Capture data

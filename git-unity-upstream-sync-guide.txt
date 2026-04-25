@@ -1,0 +1,185 @@
+================================================================
+  GIT GUIDE: SYNCING YOUR UNITY PROJECT WITH AN UPSTREAM REPO
+  (Mac — Meta Quest 3 / Unity Project)
+================================================================
+
+----------------------------------------------------------------
+STEP 1: SHOW HIDDEN FILES (to see .git folder)
+----------------------------------------------------------------
+In Finder, press:  Cmd + Shift + .
+This toggles hidden files/folders on and off.
+
+Note: Always run git commands from the PROJECT ROOT
+(the folder that contains Assets/, Packages/, ProjectSettings/)
+NEVER from inside the .git/ folder.
+
+
+----------------------------------------------------------------
+STEP 2: OPEN PROJECT IN VS CODE
+----------------------------------------------------------------
+Option A — From terminal:
+    cd path/to/your/unity/project
+    code .
+
+Option B — From VS Code:
+    File → Open Folder → select the Unity project root folder
+
+
+----------------------------------------------------------------
+STEP 3: ADD THE ORIGINAL PUBLIC REPO AS "UPSTREAM" (one time only)
+----------------------------------------------------------------
+    # Check existing remotes
+    git remote -v
+
+    # Add the original public repo as upstream
+    git remote add upstream https://github.com/oculus-samples/Unity-PassthroughCameraApiSamples.git
+
+    # Verify both remotes are listed
+    git remote -v
+    # You should see:
+    #   origin    https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git
+    #   upstream  https://github.com/oculus-samples/Unity-PassthroughCameraApiSamples.git
+
+
+----------------------------------------------------------------
+STEP 4: CONFIGURE UNITYYAMLMERGE FOR UNITY FILES (one time only)
+----------------------------------------------------------------
+Unity scenes, prefabs, and assets are YAML files that need
+Unity's smart merge tool to resolve conflicts properly.
+
+First, find your Unity version:
+    ls /Applications/Unity/Hub/Editor/
+    # You'll see something like: 2022.3.10f1
+
+Verify the merge tool exists:
+    ls "/Applications/Unity/Hub/Editor/<VERSION>/Unity.app/Contents/Tools/UnityYAMLMerge"
+    # Replace <VERSION> with your actual version number
+
+Then open your project's git config:
+    git config --edit
+
+SEE ALSO HERE: https://docs.unity3d.com/Manual/SmartMerge.html
+
+Add or update these lines (replace <VERSION> with your version):
+    [merge]
+        tool = unityyamlmerge
+
+    [mergetool "unityyamlmerge"]
+        trustExitCode = false
+        cmd = "/Applications/Unity/Hub/Editor/<VERSION>/Unity.app/Contents/Tools/UnityYAMLMerge" merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+Example with a real version number:
+    cmd = "/Applications/Unity/Hub/Editor/2022.3.10f1/Unity.app/Contents/Tools/UnityYAMLMerge" merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+Optionally, also set VS Code as fallback merge tool (global):
+    git config --global merge.tool vscode
+    git config --global mergetool.vscode.cmd 'code --wait $MERGED'
+
+
+----------------------------------------------------------------
+STEP 5: SAFE MERGE WORKFLOW (do this on a branch first)
+----------------------------------------------------------------
+    # Create a new branch to test the merge safely
+    git checkout -b sync-upstream
+
+    # Fetch all upstream changes (does NOT modify your files yet)
+    git fetch upstream
+
+    # Merge upstream into your sync branch
+    git merge upstream/main
+
+    # If no conflicts: test in Unity, then merge to main (see Step 7)
+    # If conflicts: proceed to Step 6
+
+
+----------------------------------------------------------------
+STEP 6: RESOLVING MERGE CONFLICTS
+----------------------------------------------------------------
+See which files have conflicts:
+    git diff --name-only --diff-filter=U
+
+--- Option A: Use UnityYAMLMerge (for .unity, .asset, .prefab) ---
+    git mergetool
+
+--- Option B: Take upstream version (their changes) ---
+    git checkout --theirs Assets/Oculus/OculusProjectConfig.asset
+    git checkout --theirs Assets/XR/Settings/OpenXR\ Package\ Settings.asset
+    git checkout --theirs ProjectSettings/ProjectSettings.asset
+
+--- Option C: Keep your own version ---
+    git checkout --ours <filename>
+
+--- Option D: Manually merge in VS Code (e.g. manifest.json) ---
+    code Packages/manifest.json
+    # Look for conflict markers:
+    #   <<<<<<< HEAD          ← your version starts here
+    #   your content
+    #   =======
+    #   upstream content
+    #   >>>>>>> upstream/main ← upstream version ends here
+    #
+    # Edit the file to keep what you want, remove all markers
+    # Save the file when done
+
+After resolving ALL conflicts:
+    git add .
+    git commit -m "Merge upstream updates into local project"
+
+
+----------------------------------------------------------------
+STEP 7: MERGE SYNC BRANCH INTO MAIN & PUSH
+----------------------------------------------------------------
+    # Switch back to main
+    git checkout main
+
+    # Merge your tested sync branch
+    git merge sync-upstream
+
+    # Push to your private repo
+    git push origin main
+
+
+----------------------------------------------------------------
+STEP 8: AFTER MERGING — UNITY CHECKLIST
+----------------------------------------------------------------
+Open the project in Unity and verify:
+
+    1. Package Manager        → all your added packages still present
+    2. Your custom scenes     → open them, check nothing is broken
+    3. Build Settings         → Android / ARM64 / Quest 3 still set
+    4. OVR Project Setup Tool → fix any new warnings from SDK update
+
+
+----------------------------------------------------------------
+READING THE FILEMERGE / DIFF TOOL (Mac)
+----------------------------------------------------------------
+When a visual merge tool opens:
+
+    LEFT panel  (REMOTE) = Upstream version  (public repo changes)
+    RIGHT panel (LOCAL)  = Your version      (your branch)
+    BOTTOM panel         = The final merged result that will be saved
+
+Use the arrows in the middle to choose which side to accept
+for each difference.
+
+
+----------------------------------------------------------------
+QUICK REFERENCE — MOST USED COMMANDS
+----------------------------------------------------------------
+    git remote -v                          # list remotes
+    git remote add upstream <url>          # add upstream (one time)
+    git fetch upstream                     # fetch upstream changes
+    git merge upstream/main                # merge into current branch
+    git checkout --theirs <file>           # take upstream version
+    git checkout --ours <file>             # keep your version
+    git diff --name-only --diff-filter=U   # list conflicting files
+    git add .                              # stage all resolved files
+    git commit -m "your message"           # commit the merge
+    git push origin main                   # push to your private repo
+    git status                             # always useful to check state
+    git log --oneline                      # see recent commits
+
+
+================================================================
+  END OF GUIDE
+================================================================

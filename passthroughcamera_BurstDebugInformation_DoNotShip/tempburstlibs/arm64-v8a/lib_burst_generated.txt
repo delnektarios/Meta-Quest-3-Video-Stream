@@ -1,4 +1,4 @@
-Library: /Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
+Library: /Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
 --platform=Android
 --minimum-os-version=
 --backend=burst-llvm-19
@@ -9,10 +9,10 @@ Library: /Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/Burst
+--temp-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/Burst
 --key-folder=/Users/nekdel/Unity_Projects/6000.3.4f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Library/Burst
---output=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
+--decode-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Library/Burst
+--output=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.IParallelForBatchExtensions+ParallelForBatchJobStruct`1[[Unity.InferenceEngine.CPUBackend+LogJob, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null]], Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+LogJob&, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5f9874c7339359006072fc0b8cb15177
@@ -119,10 +119,10 @@ Library: /Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples
 --target-framework=NetFramework
 --float-mode=Fast
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/Burst
+--temp-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/Burst
 --key-folder=/Users/nekdel/Unity_Projects/6000.3.4f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Library/Burst
---output=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
+--decode-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Library/Burst
+--output=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.IParallelForBatchExtensions+ParallelForBatchJobStruct`1[[Unity.InferenceEngine.CPUBackend+CumSumFloatJob, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null]], Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+CumSumFloatJob&, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--d0dc47f714cce3007d47378007a15d32
@@ -189,10 +189,10 @@ Library: /Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/Burst
+--temp-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/Burst
 --key-folder=/Users/nekdel/Unity_Projects/6000.3.4f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Library/Burst
---output=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
+--decode-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Library/Burst
+--output=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobParallelForExtensions+ParallelForJobStruct`1[[Unity.InferenceEngine.CPUBackend+ScatterElementsIntFastJob, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+ScatterElementsIntFastJob&, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--0625abccd0cd7e01ef8d8987c26a9711
@@ -306,10 +306,10 @@ Library: /Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples
 --target-framework=NetFramework
 --float-mode=Fast
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/Burst
+--temp-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/Burst
 --key-folder=/Users/nekdel/Unity_Projects/6000.3.4f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Library/Burst
---output=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
+--decode-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Library/Burst
+--output=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.Jobs.IJobParallelForExtensions+ParallelForJobStruct`1[[Unity.InferenceEngine.CPUBackend+GlobalAverageVariancePoolJob, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(Unity.InferenceEngine.CPUBackend+GlobalAverageVariancePoolJob&, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--1dab2593ba53bf4972bcfaad20187eed
@@ -323,10 +323,10 @@ Library: /Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp/burst.link.xml
---temp-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/Burst
+--temp-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/Burst
 --key-folder=/Users/nekdel/Unity_Projects/6000.3.4f1/PlaybackEngines/AndroidPlayer
---decode-folder=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Library/Burst
---output=/Users/nekdel/Unity_Projects/Projects/Unity-PassthroughCameraApiSamples/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
+--decode-folder=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Library/Burst
+--output=/Users/nekdel/Unity_Projects/Projects/Meta-Camera-Tutorials/Temp/BurstOutput/tempburstlibs/arm64-v8a/lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=Unity.InferenceEngine.CPUBackend+ConvJob, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null::CanUseDepthwiseConvKernel(Unity.InferenceEngine.CPUBackend+ConvJob*, Unity.InferenceEngine, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null)--7a32ccc1a75617febcb28bc0ac2057ce

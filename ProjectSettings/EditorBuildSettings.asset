@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/init.unity
     guid: 73a973defa21f4f42a95bff91187e80f
+  - enabled: 0
+    path: Assets/PassthroughCameraApiSamples/MultiObjectDetection/MultiObjectDetection.unity
+    guid: 20c230cce46443841b5727b1d6100bfc
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f2bf97b3acdb64248a707c407c9fc54e, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

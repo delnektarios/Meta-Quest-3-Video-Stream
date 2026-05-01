@@ -67,11 +67,18 @@ namespace LudicWorlds
         {
             _elapsedTime += Time.deltaTime;
 
+            // update for detecting fpd drops, update every half second to avoid too much overhead from calling Time.smoothDeltaTime
+            float currentFps = 1.0f / Time.smoothDeltaTime;
+            _sumFps += currentFps;
+            _fpsSamples++;
+
             if(_elapsedTime > 0.5f)
             {
                 //Update FPS every half second 
-                _fpsText.text = ( Mathf.Round((_sumFps / _fpsSamples))).ToString();
+                //_fpsText.text = ( Mathf.Round((_sumFps / _fpsSamples))).ToString();
 
+                float avgFps = _sumFps / _fpsSamples;
+                _fpsText.text = $"{Mathf.Round(avgFps)} fps";
                 _elapsedTime = 0f;
                 _sumFps = 0f;
                 _fpsSamples = 0;

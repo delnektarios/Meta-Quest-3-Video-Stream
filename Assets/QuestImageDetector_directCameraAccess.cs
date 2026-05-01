@@ -54,9 +54,9 @@ public class QuestImageDetector_directCameraAccess : MonoBehaviour
     [Range(1, 10)] public int ProcessEveryNFrames = 3;
     [Range(0.5f, 0.9f)] public float LoweRatioThreshold = 0.75f;
 
-    [Header("Position Correction")]
-    [Tooltip("Fine-tune the world position offset. Start with X=-0.06 to correct left camera offset.")]
-    public Vector3 PositionOffset = new Vector3(-0.06f, 0f, 0f);
+    // [Header("Position Correction")]
+    // [Tooltip("Fine-tune the world position offset. Start with X=-0.06 to correct left camera offset.")]
+    // public Vector3 PositionOffset = new Vector3(-0.06f, 0f, 0f);
 
     [Header("World Space")]
     [Tooltip("CenterEyeAnchor camera. Leave empty to use Camera.main.")]
@@ -112,6 +112,14 @@ public class QuestImageDetector_directCameraAccess : MonoBehaviour
     private bool _isDetected = false;
     private int _frameCounter = 0;
     private CancellationTokenSource _cts = new CancellationTokenSource();
+
+    // -------------------------------------------------------------------------
+    // Variables to smooth out the rectangle between frames.
+    private Vector3 _lastWorldCenter;
+    private Quaternion _lastWorldRotation;
+    private Vector3[] _lastWorldCorners = new Vector3[4];
+    private bool _hasLastPose = false;
+
 
     // -------------------------------------------------------------------------
     // Unity Lifecycle
@@ -199,15 +207,29 @@ public class QuestImageDetector_directCameraAccess : MonoBehaviour
     {
         if (!_initialized) return;
 
-        // Refresh texture reference each frame in case it changes
-        if (CameraAccess.IsPlaying)
-            _cameraTexture = CameraAccess.GetTexture();
-
         _frameCounter++;
-        if (_frameCounter % ProcessEveryNFrames != 0) return;
+        if (_frameCounter % ProcessEveryNFrames == 0)
+            DetectInPassthroughFrame();
 
-        DetectInPassthroughFrame();
+        // Update outline EVERY frame based on head movement
+        // even when not running detection
+        if (_isDetected && _hasLastPose && OutlineRenderer != null)
+            DrawWorldOutline(_lastWorldCorners);
     }
+
+    // private void Update()
+    // {
+    //     if (!_initialized) return;
+
+    //     // Refresh texture reference each frame in case it changes
+    //     if (CameraAccess.IsPlaying)
+    //         _cameraTexture = CameraAccess.GetTexture();
+
+    //     _frameCounter++;
+    //     if (_frameCounter % ProcessEveryNFrames != 0) return;
+
+    //     DetectInPassthroughFrame();
+    // }
 
     private void OnDestroy()
     {
@@ -335,6 +357,12 @@ public class QuestImageDetector_directCameraAccess : MonoBehaviour
     Debug.Log($"[QuestImageDetector] OutlineRenderer null? {OutlineRenderer == null}");
     Debug.Log($"[QuestImageDetector] SignMenu null? {SignMenu == null}");
 
+            // Store last known pose
+            _lastWorldCenter = worldCenter;
+            _lastWorldRotation = worldRotation;
+            _lastWorldCorners = worldCorners;
+            _hasLastPose = true;
+
             DrawWorldOutline(worldCorners);
 
             if (!_isDetected)
@@ -412,10 +440,10 @@ public class QuestImageDetector_directCameraAccess : MonoBehaviour
         for (int i = 0; i < 4; i++)
             worldCorners[i] = CornerToWorld(corners[i]);
 
-        // Apply position correction to ALL corners first
-        Vector3 correction = XRCamera.transform.TransformDirection(PositionOffset);
-        for (int i = 0; i < 4; i++)
-            worldCorners[i] += correction;
+        // // Apply position correction to ALL corners first
+        // Vector3 correction = XRCamera.transform.TransformDirection(PositionOffset);
+        // for (int i = 0; i < 4; i++)
+        //     worldCorners[i] += correction;
 
         // Then compute center from corrected corners
         worldCenter = (worldCorners[0] + worldCorners[1] +
@@ -435,13 +463,35 @@ public class QuestImageDetector_directCameraAccess : MonoBehaviour
         worldRotation = Quaternion.LookRotation(forward, up);
     }
 
+    /// <summary>
+    /// Here is all the magic that converts a 2D corner point in the camera image to a 3D point in the world.
+    /// </summary>
+    /// <param name="corner"></param>
+    /// <returns></returns>
     private Vector3 CornerToWorld(Point corner)
     {
-        float sx = ((float)corner.x / CaptureWidth) * Screen.width;
-        float sy = (1f - (float)corner.y / CaptureHeight) * Screen.height;
-        return XRCamera.ScreenToWorldPoint(
-            new Vector3(sx, sy, EstimatedSignDistance));
+        // Convert OpenCV pixel coordinates to viewport coordinates (0-1 range)
+        // OpenCV origin is top-left, viewport origin is bottom-left so we flip Y
+        float u = (float)corner.x / CaptureWidth;
+        float v = 1f - ((float)corner.y / CaptureHeight);
+
+        // Use PassthroughCameraAccess.ViewportPointToRay() 
+        // This uses the REAL physical camera position and intrinsics
+        // exactly like CameraToWorldManager does
+        Ray ray = CameraAccess.ViewportPointToRay(new Vector2(u, v));
+
+        // Project along the ray at our estimated distance
+        return ray.origin + ray.direction * EstimatedSignDistance;
     }
+
+    // private Vector3 CornerToWorld(Point corner)
+    // {   // without taking into account the camera intrinsics, 
+    //     // we can only estimate the world position by projecting the corner from screen space to world space at a fixed distance
+    //     float sx = ((float)corner.x / CaptureWidth) * Screen.width;
+    //     float sy = (1f - (float)corner.y / CaptureHeight) * Screen.height;
+    //     return XRCamera.ScreenToWorldPoint(
+    //         new Vector3(sx, sy, EstimatedSignDistance));
+    // }
 
     // -------------------------------------------------------------------------
     // World Space Outline

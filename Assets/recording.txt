@@ -1,0 +1,7 @@
+adb shell screenrecord /sdcard/recording.mp4
+# Press Ctrl+C to stop
+# Then pull the file to your Mac:
+adb pull /sdcard/recording.mp4 ~/Desktop/recording.mp4
+
+
+will it work?

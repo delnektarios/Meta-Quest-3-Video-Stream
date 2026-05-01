@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 258c6e042f8cdf7448859278d021d9fc
+AssetOrigin:
+  serializedVersion: 1
+  productId: 21088
+  packageName: OpenCV for Unity
+  packageVersion: 3.0.2
+  assetPath: Assets/OpenCVForUnity/Plugins/Windows/x86_64/opencvforunity.dll
+  uploadId: 846054
 PluginImporter:
   externalObjects: {}
   serializedVersion: 3

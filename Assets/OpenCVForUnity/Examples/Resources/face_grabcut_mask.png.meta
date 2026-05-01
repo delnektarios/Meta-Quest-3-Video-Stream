@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 00284dd30e757b24cb5cb63ac38c7953
 timeCreated: 1594657635
-licenseType: Free
+licenseType: Store
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
@@ -88,3 +88,10 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 21088
+  packageName: OpenCV for Unity
+  packageVersion: 3.0.2
+  assetPath: Assets/OpenCVForUnity/Examples/Resources/face_grabcut_mask.png
+  uploadId: 846054

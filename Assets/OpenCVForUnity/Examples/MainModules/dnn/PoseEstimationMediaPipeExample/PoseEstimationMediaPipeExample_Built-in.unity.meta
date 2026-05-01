@@ -9,6 +9,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 21088
   packageName: OpenCV for Unity
-  packageVersion: 2.6.3
+  packageVersion: 3.0.2
   assetPath: Assets/OpenCVForUnity/Examples/MainModules/dnn/PoseEstimationMediaPipeExample/PoseEstimationMediaPipeExample_Built-in.unity
-  uploadId: 702270
+  uploadId: 846054

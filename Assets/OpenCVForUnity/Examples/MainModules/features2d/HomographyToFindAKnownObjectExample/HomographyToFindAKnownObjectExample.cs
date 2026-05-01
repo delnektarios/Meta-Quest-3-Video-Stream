@@ -22,8 +22,8 @@ namespace OpenCVForUnityExample
     public class HomographyToFindAKnownObjectExample : MonoBehaviour
     {
         // Constants
-        private static readonly string IMAGE_0_FILENAME = "OpenCVForUnityExamples/features2d/firehose.png";
-        private static readonly string IMAGE_1_FILENAME = "OpenCVForUnityExamples/features2d/IMG_7580_scene.jpg";
+        private static readonly string IMAGE_0_FILENAME = "OpenCVForUnityExamples/features2d/box.png";
+        private static readonly string IMAGE_1_FILENAME = "OpenCVForUnityExamples/features2d/box_in_scene.png";
 
         // Public Fields
         [Header("Output")]

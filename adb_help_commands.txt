@@ -1,0 +1,8 @@
+# See all installed packages
+adb shell pm list packages | grep -i your_app_name
+
+# Or list all non-system apps
+adb shell pm list packages -3
+
+# Find your .apk file (usually in your build output folder)
+adb install /path/to/your/build/your_app.apk

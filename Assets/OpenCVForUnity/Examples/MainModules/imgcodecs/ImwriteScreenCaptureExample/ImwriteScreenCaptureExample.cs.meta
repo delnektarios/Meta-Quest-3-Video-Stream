@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 1abd939d2da860a4c988b658c52bc69a
 timeCreated: 1516806019
-licenseType: Pro
+licenseType: Store
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
@@ -10,3 +10,10 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 21088
+  packageName: OpenCV for Unity
+  packageVersion: 3.0.2
+  assetPath: Assets/OpenCVForUnity/Examples/MainModules/imgcodecs/ImwriteScreenCaptureExample/ImwriteScreenCaptureExample.cs
+  uploadId: 846054

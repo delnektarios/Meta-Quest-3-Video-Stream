@@ -812,7 +812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &104519915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1007,7 +1007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &150435094
 Transform:
   m_ObjectHideFlags: 0
@@ -3397,8 +3397,8 @@ GameObject:
   m_Component:
   - component: {fileID: 855050436}
   - component: {fileID: 855050438}
-  - component: {fileID: 855050437}
   - component: {fileID: 855050439}
+  - component: {fileID: 855050440}
   m_Layer: 0
   m_Name: VideoPanel
   m_TagString: Untagged
@@ -3425,36 +3425,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -235}
   m_SizeDelta: {x: 580, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &855050437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855050435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &855050438
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3499,6 +3469,33 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &855050440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855050435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &865046074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5249,7 +5246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1568470485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5383,7 +5380,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 28548023}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5408,19 +5405,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4182de1e0c7443dbbd114f070ac4767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ContentViewer
-  ViewerCanvas: {fileID: 0}
-  TitleLabel: {fileID: 0}
-  CloseButton: {fileID: 0}
-  InfoTabButton: {fileID: 0}
-  VideoTabButton: {fileID: 0}
-  ModelTabButton: {fileID: 0}
-  InfoPanel: {fileID: 0}
-  VideoPanel: {fileID: 0}
-  ModelPanel: {fileID: 0}
-  DescriptionLabel: {fileID: 0}
-  ContentTextLabel: {fileID: 0}
-  VideoPlayer: {fileID: 0}
-  VideoDisplay: {fileID: 0}
+  ViewerCanvas: {fileID: 1570831531}
+  TitleLabel: {fileID: 595379574}
+  CloseButton: {fileID: 1248120963}
+  InfoTabButton: {fileID: 1744153077}
+  VideoTabButton: {fileID: 401254290}
+  ModelTabButton: {fileID: 547901482}
+  InfoPanel: {fileID: 897671759}
+  VideoPanel: {fileID: 855050435}
+  ModelPanel: {fileID: 1836021942}
+  DescriptionLabel: {fileID: 865046076}
+  ContentTextLabel: {fileID: 441233158}
+  VideoPlayer: {fileID: 855050439}
+  VideoDisplay: {fileID: 855050440}
   FadeDuration: 0.25
   ViewerDistance: 1.5
   VerticalOffset: 0
@@ -5618,7 +5615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1682247470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7654,7 +7651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4405768068627529578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8065,7 +8062,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6182922350655214059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8167,7 +8164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

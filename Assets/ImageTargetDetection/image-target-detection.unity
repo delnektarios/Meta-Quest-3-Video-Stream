@@ -955,8 +955,6 @@ MonoBehaviour:
   wideMotionModeHandPosesEnabled: 0
   _readOnlyFastMotionModeHandPosesEnabled: 0
   fastMotionModeHandPosesEnabled: 0
-  _readOnlyWideMotionMode2HandPosesEnabled: 0
-  wideMotionMode2HandPosesEnabled: 0
   dynamicResolutionVersion: 1
 --- !u!114 &386264060
 MonoBehaviour:
@@ -2969,7 +2967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TargetLibraryManager
   ApiBaseUrl: https://noesishub-company-safer-ar-app.hf.space
   ApiToken: safer-quest-2026-xyz
-  HFToken: HF_TOKEN_REMOVED
+  HFToken: REMOVED_HF_TOKEN
   Detector: {fileID: 479915267}
   OnLibraryReady:
     m_PersistentCalls:
@@ -3242,6 +3240,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -3347,11 +3346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13057db3ad2f54aef8f1b329bcbaeed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NotificationManager
-  NotificationBubblePrefab: {fileID: 5354665140264575705, guid: 8575b0dd9482a4c6da936b6426bfd029, type: 3}
+  NotificationBubblePrefab: {fileID: 1665936930}
   ContentViewer: {fileID: 1570831532}
   XRCamera: {fileID: 28548023}
-  BubbleDistance: 0.6
-  VerticalOffset: -0.25
+  BubbleVerticalOffset: 0.2
   HorizontalSpacing: 0.18
   FadeDuration: 0.18
 --- !u!1001 &1675003711
@@ -3810,7 +3808,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900725526}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -3862,7 +3860,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1

@@ -7,7 +7,7 @@ using OpenCVForUnity.Features2dModule;
 using OpenCVForUnity.ImgcodecsModule;
 using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityIntegration;
-using PassthroughCameraSamples;
+using Meta.XR;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.Rendering;

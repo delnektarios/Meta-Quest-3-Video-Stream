@@ -58,6 +58,7 @@ public class MultiTargetDetector : MonoBehaviour
     // -------------------------------------------------------------------------
 
     private List<LoadedTarget> _targets = new();
+    public List<LoadedTarget> LoadedTargets => _targets;
     private DescriptorMatcher _matcher;
     private bool _initialized = false;
     private int _frameCounter = 0;

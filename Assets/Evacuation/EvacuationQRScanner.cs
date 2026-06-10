@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.Experimental.Rendering;
+using Meta.XR;
 
 /// <summary>
 /// EvacuationQRScanner (v2 — API fetch)

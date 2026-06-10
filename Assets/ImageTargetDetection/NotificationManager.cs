@@ -169,7 +169,7 @@ public class NotificationManager : MonoBehaviour
     private void SetBubbleIcon(NotificationBubble bubble, TargetData data)
     {
         // Find the loaded target texture from MultiTargetDetector
-        var detector = FindObjectOfType<MultiTargetDetector>();
+        var detector = FindAnyObjectByType<MultiTargetDetector>();
         if (detector == null) return;
 
         foreach (var loadedTarget in detector.LoadedTargets)

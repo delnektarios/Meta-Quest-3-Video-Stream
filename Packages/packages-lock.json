@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.endel.nativewebsocket": {
+      "version": "https://github.com/endel/NativeWebSocket.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ea014c9ae534d56111962d96f89f8a046e302dc9"
+    },
     "com.meta.xr.mrutilitykit": {
       "version": "201.0.0",
       "depth": 0,
@@ -13,7 +20,7 @@
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.core": {
-      "version": "201.0.0",
+      "version": "203.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {

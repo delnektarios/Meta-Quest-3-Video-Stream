@@ -1,7 +1,8 @@
 {
   "dependencies": {
+    "com.endel.nativewebsocket": "https://github.com/endel/NativeWebSocket.git#upm",
     "com.meta.xr.mrutilitykit": "201.0.0",
-    "com.meta.xr.sdk.core": "201.0.0",
+    "com.meta.xr.sdk.core": "203.0.0",
     "com.meta.xr.sdk.interaction": "201.0.0",
     "com.meta.xr.sdk.interaction.ovr": "201.0.0",
     "com.unity.2d.sprite": "1.0.0",

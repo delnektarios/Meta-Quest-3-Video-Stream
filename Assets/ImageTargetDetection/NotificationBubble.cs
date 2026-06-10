@@ -149,7 +149,7 @@ public class NotificationBubble : MonoBehaviour
         Debug.Log($"[NotificationBubble] Closed: {_data?.name}");
 
         // Find NotificationManager and dismiss
-        var manager = FindObjectOfType<NotificationManager>();
+        var manager = FindAnyObjectByType<NotificationManager>();
         if (manager != null && _data != null)
             manager.DismissBubble(_data.id);
         else

@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TargetLibraryManager
   ApiBaseUrl: https://noesishub-company-safer-ar-app.hf.space
   ApiToken: safer-quest-2026-xyz
-  HFToken: REMOVED_HF_TOKEN
+  HFToken: TOKEN TOKEN
   Detector: {fileID: 479915267}
   OnLibraryReady:
     m_PersistentCalls:

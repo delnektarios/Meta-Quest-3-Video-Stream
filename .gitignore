@@ -1,2 +1,4 @@
 # Never commit config with tokens
 Assets/StreamingAssets/config.json
+Assets/OpenCVForUnity/Plugins/WebGL/
+Assets/OpenCVForUnity/Extra.unitypackage
